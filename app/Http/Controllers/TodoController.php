@@ -26,8 +26,9 @@ class TodoController extends Controller
   {
     // 新規todoを作成
     $todo = new Todo();
-    // リクエストのtitleをtodoのtitleに代入
+    // $todoの各カラムに値を代入
     $todo->title = $request->get('title');
+    $todo->completed = false;
     // todoを保存
     $todo->save();
   }
@@ -47,7 +48,7 @@ class TodoController extends Controller
   {
     // $idをもとにtodoを取得
     $todo = Todo::find($id);
-    // リクエストのtitleをtodoのtitleに代入
+    // リクエストをもとに$todoの各カラムに値を代入
     $todo->title = $request->get('title');
     // todoを保存
     $todo->save();
@@ -58,6 +59,9 @@ class TodoController extends Controller
    */
   public function destroy(string $id)
   {
-    //
+    //　$idをもとにtodoを取得
+    $todo = Todo::find($id);
+    // todoを削除
+    $todo->delete();
   }
 }
