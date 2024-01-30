@@ -48,8 +48,8 @@ class TodoController extends Controller
   {
     // $idをもとにtodoを取得
     $todo = Todo::find($id);
-    // リクエストをもとに$todoの各カラムに値を代入
-    $todo->title = $request->get('title');
+    // リクエストをもとに$todoにcompletedの値を代入
+    $todo->completed = $request->get('completed');
     // todoを保存
     $todo->save();
   }
