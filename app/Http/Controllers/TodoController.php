@@ -73,5 +73,7 @@ class TodoController extends Controller
     $todo = Todo::find($id);
     // todoを削除
     $todo->delete();
+
+    return $todo;
   }
 }
