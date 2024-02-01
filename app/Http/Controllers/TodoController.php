@@ -31,6 +31,8 @@ class TodoController extends Controller
     $todo->completed = false;
     // todoを保存
     $todo->save();
+
+    return $todo;
   }
 
   /**
@@ -38,7 +40,9 @@ class TodoController extends Controller
    */
   public function show(string $id)
   {
-    //
+    // $idをもとにtodoを取得
+    $todo = Todo::find($id);
+    return $todo;
   }
 
   /**
@@ -56,6 +60,8 @@ class TodoController extends Controller
     }
     // todoを保存
     $todo->save();
+
+    return $todo;
   }
 
   /**
