@@ -32,7 +32,7 @@ class TodoFactory extends Factory
     public function uncompleted()
     {
         return $this->state(fn (array $attributes) => [
-            'is_completed' => false,
+            'completed' => false,
         ]);
     }
 }
