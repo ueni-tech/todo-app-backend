@@ -17,8 +17,22 @@ class TodoFactory extends Factory
     public function definition(): array
     {
         return [
-            'title' => $this->faker->word,
-            'completed' => $this->faker->boolean,
+            'title' => fake()->sentence(),
+            'completed' => fake()->boolean()
         ];
+    }
+
+    public function completed()
+    {
+        return $this->state(fn (array $attributes) => [
+            'completed' => true
+        ]);
+    }
+
+    public function uncompleted()
+    {
+        return $this->state(fn (array $attributes) => [
+            'is_completed' => false,
+        ]);
     }
 }
