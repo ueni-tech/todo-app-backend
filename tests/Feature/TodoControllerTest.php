@@ -25,15 +25,15 @@ class TodoControllerTest extends TestCase
     $response->assertStatus(200)->assertJsonFragment([
       'id' => $completed_todo_1->id,
       'title' => $completed_todo_1->title,
-      'completed' => true
+      'completed' => 1
     ])->assertJsonFragment([
       'id' => $completed_todo_2->id,
       'title' => $completed_todo_2->title,
-      'completed' => true
+      'completed' => 1
     ])->assertJsonFragment([
       'id' => $uncompleted_todo_1->id,
       'title' => $uncompleted_todo_1->title,
-      'completed' => false
+      'completed' => 0
     ]);
   }
 
@@ -44,7 +44,7 @@ class TodoControllerTest extends TestCase
       'completed' => false
     ]);
 
-    $response->assertStatus(200)->assertJsonFragment([
+    $response->assertStatus(201)->assertJsonFragment([
       'title' => 'New Todo',
       'completed' => false
     ]);
