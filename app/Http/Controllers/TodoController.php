@@ -56,7 +56,7 @@ class TodoController extends Controller
     // リクエストをもとに$todoにtitleの値を代入
     // $todo->title = $request->get('title');
     // リクエストにcompletedの値があれば$todoにcompletedの値を代入
-    if ($request->get('completed')) {
+    if ($request->has('completed')) {
       $todo->completed = $request->get('completed');
     }
     // todoを保存
