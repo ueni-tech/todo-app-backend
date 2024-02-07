@@ -16,7 +16,8 @@ class TodoController extends Controller
   {
     // todoを全件取得
     $todos = Todo::all();
-    return $todos;
+    // json形式で返す
+    return response()->json($todos);
   }
 
   /**
@@ -32,7 +33,7 @@ class TodoController extends Controller
     // todoを保存
     $todo->save();
 
-    return $todo;
+    return response()->json($todo);
   }
 
   /**
@@ -42,7 +43,7 @@ class TodoController extends Controller
   {
     // $idをもとにtodoを取得
     $todo = Todo::find($id);
-    return $todo;
+    return response()->json($todo);
   }
 
   /**
@@ -61,7 +62,7 @@ class TodoController extends Controller
     // todoを保存
     $todo->save();
 
-    return $todo;
+    return response()->json($todo);
   }
 
   /**
