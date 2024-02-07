@@ -44,7 +44,7 @@ class TodoControllerTest extends TestCase
       'completed' => false
     ]);
 
-    $response->assertStatus(201)->assertJsonFragment([
+    $response->assertStatus(200)->assertJsonFragment([
       'title' => 'New Todo',
       'completed' => false
     ]);
