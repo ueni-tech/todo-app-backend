@@ -10,9 +10,11 @@ use Illuminate\Http\Request;
 class TodoController extends Controller
 {
   /**
-   * Display a listing of the resource.
+   * todoの一覧を表示する
+   * 
+   * @return \Illuminate\Http\JsonResponse
    */
-  public function index()
+  public function index(): \Illuminate\Http\JsonResponse
   {
     // todoを全件取得
     $todos = Todo::all();
@@ -21,9 +23,12 @@ class TodoController extends Controller
   }
 
   /**
-   * Store a newly created resource in storage.
+   * 新しいtodoを作成する
+   * 
+   * @param \App\Http\Requests\Todo\StoreRequest $request
+   * @return \Illuminate\Http\JsonResponse
    */
-  public function store(StoreRequest $request)
+  public function store(StoreRequest $request): \Illuminate\Http\JsonResponse
   {
     // 新規todoを作成
     $todo = new Todo();
@@ -37,24 +42,16 @@ class TodoController extends Controller
   }
 
   /**
-   * Display the specified resource.
+   * 指定されたtodoを更新する
+   * 
+   * @param \App\Http\Requests\Todo\UpdateRequest $request
+   * @param string $id
+   * @return \Illuminate\Http\JsonResponse
    */
-  public function show(string $id)
+  public function update(UpdateRequest $request, string $id): \Illuminate\Http\JsonResponse
   {
     // $idをもとにtodoを取得
     $todo = Todo::find($id);
-    return response()->json($todo);
-  }
-
-  /**
-   * Update the specified resource in storage.
-   */
-  public function update(UpdateRequest $request, string $id)
-  {
-    // $idをもとにtodoを取得
-    $todo = Todo::find($id);
-    // リクエストをもとに$todoにtitleの値を代入
-    // $todo->title = $request->get('title');
     // リクエストにcompletedの値があれば$todoにcompletedの値を代入
     if ($request->has('completed')) {
       $todo->completed = $request->get('completed');
@@ -66,9 +63,12 @@ class TodoController extends Controller
   }
 
   /**
-   * Remove the specified resource from storage.
+   * 指定されたtodoを削除する
+   * 
+   * @param string $id
+   * @return \Illuminate\Http\JsonResponse
    */
-  public function destroy(string $id)
+  public function destroy(string $id): \Illuminate\Http\JsonResponse
   {
     //　$idをもとにtodoを取得
     $todo = Todo::find($id);
